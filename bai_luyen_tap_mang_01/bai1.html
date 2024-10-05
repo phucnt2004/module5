@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1</title>
+</head>
+<body>
+    <h3>Số phần tử lớn hơn hoặc bằng 10:</h3>
+    <p id="result1"></p>
+    <script>
+        let arr = [2, 13, 9, 18, 7, 10, 25, 1, 5, 12];
+        let count = arr.filter(num => num >= 10).length;
+        document.getElementById("result1").innerHTML = count;
+    </script>
+</body>
+</html>

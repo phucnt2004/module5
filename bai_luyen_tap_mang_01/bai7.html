@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 7</title>
+</head>
+<body>
+    <h3>Mảng sau khi xóa phần tử V:</h3>
+    <p id="result7"></p>
+    <script>
+        let arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+        let V = 10;
+        let index = arr.indexOf(V);
+        if (index !== -1) {
+            for (let i = index; i < arr.length - 1; i++) {
+                arr[i] = arr[i + 1];
+            }
+            arr[arr.length - 1] = 0;
+        }
+        document.getElementById("result7").innerHTML = arr.join(', ');
+    </script>
+</body>
+</html>

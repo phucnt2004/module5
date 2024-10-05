@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ Điển Anh-Việt</title>
+</head>
+<body>
+
+    <h1>Từ Điển Anh-Việt Đơn Giản</h1>
+
+    <label for="inputWord">Nhập từ tiếng Anh: </label>
+    <input type="text" id="inputWord" placeholder="Nhập từ tiếng Anh...">
+    <button onclick="translate()">Tra từ</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        const englishWords = ["hello", "goodbye", "dog", "cat", "book"];
+        const vietnameseWords = ["xin chào", "tạm biệt", "chó", "mèo", "sách"];
+
+        function translate() {
+
+            const input = document.getElementById("inputWord").value.toLowerCase();
+
+            const index = englishWords.indexOf(input);
+
+            if (index !== -1) {
+
+                document.getElementById("result").textContent = "Nghĩa tiếng Việt: " + vietnameseWords[index];
+            } else {
+                
+                document.getElementById("result").textContent = "Không tìm thấy từ này trong từ điển.";
+            }
+        }
+    </script>
+
+</body>
+</html>

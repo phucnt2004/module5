@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi chữ hoa và chữ thường</title>
+</head>
+<body>
+
+    <h1>Chuyển các ký tự chữ thường thành chữ hoa và ngược lại</h1>
+
+    <label for="inputString">Nhập chuỗi: </label>
+    <input type="text" id="inputString" placeholder="Nhập chuỗi...">
+    <button onclick="swapCase()">Thực hiện</button>
+
+    <p id="result"></p>
+
+    <script>
+        function swapCase() {
+            
+            let input = document.getElementById("inputString").value;
+
+            let result = '';
+
+            for (let i = 0; i < input.length; i++) {
+                let char = input[i];
+
+                if (char === char.toUpperCase()) {
+                    result += char.toLowerCase();
+                } 
+
+                else {
+                    result += char.toUpperCase();
+                }
+            }
+
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+
+</body>
+</html>

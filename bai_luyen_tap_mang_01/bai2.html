@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+</head>
+<body>
+    <h3>Phần tử lớn nhất và vị trí:</h3>
+    <p id="result2"></p>
+    <script>
+        let arr = [15, 3, 8, 22, 5, 12, 19, 7, 10, 14];
+        let max = Math.max(...arr);
+        let index = arr.indexOf(max);
+        document.getElementById("result2").innerHTML = `Phần tử lớn nhất là: ${max}, vị trí: ${index}`;
+    </script>
+</body>
+</html>

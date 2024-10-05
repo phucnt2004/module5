@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6</title>
+</head>
+<body>
+    <h3>Kết quả kiểm tra V trong mảng:</h3>
+    <p id="result6"></p>
+    <script>
+        let arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+        let V = 10;
+        if (arr.includes(V)) {
+            document.getElementById("result6").innerHTML = `${V} is in the array`;
+        } else {
+            document.getElementById("result6").innerHTML = `${V} is not in the array`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8</title>
+</head>
+<body>
+    <h3>Mảng sau khi sắp xếp giảm dần:</h3>
+    <p id="result8"></p>
+    <script>
+        let arr = [12, 5, 8, 1, 10, 6, 14, 7, 11, 3];
+        arr.sort((a, b) => b - a);
+        document.getElementById("result8").innerHTML = arr.join(', ');
+    </script>
+</body>
+</html>

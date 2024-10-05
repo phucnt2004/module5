@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chèn dấu "-" giữa 2 số chẵn</title>
+</head>
+<body>
+
+    <h1>Chèn dấu "-" giữa 2 số chẵn</h1>
+
+    <label for="inputNumber">Nhập số: </label>
+    <input type="text" id="inputNumber" placeholder="Nhập số...">
+    <button onclick="insertDash()">Thực hiện</button>
+
+    <p id="result"></p>
+
+    <script>
+        function insertDash() {
+            
+            let num = document.getElementById("inputNumber").value;
+
+            
+            let result = [];
+
+            
+            for (let i = 0; i < num.length; i++) {
+                
+                result.push(num[i]);
+
+                
+                if (i < num.length - 1) {
+                    let current = parseInt(num[i]);
+                    
+                    let next = parseInt(num[i + 1]);
+
+                    if (current % 2 === 0 && next % 2 === 0) {
+                        result.push('-'); 
+                    }
+                }
+            }
+
+            
+            document.getElementById("result").textContent = result.join('');
+        }
+    </script>
+
+</body>
+</html>
