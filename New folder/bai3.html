@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3</title>
+    <script>
+        function compareAndAdd(num1, num2) {
+            if (num1 > num2) {
+                alert("Số thứ nhất lớn hơn số thứ hai");
+            } else {
+                return num1 + num2;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Kết quả: <span id="result"></span></p>
+    <script>
+        let result = compareAndAdd(3, 7);
+        if (result !== undefined) {
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
