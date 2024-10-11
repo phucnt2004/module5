@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5: Tìm Số Nhỏ Nhất</title>
+</head>
+<body>
+    <h1>Bài 5: Tìm số nhỏ nhất</h1>
+    <input type="number" id="num5_1" placeholder="Số thứ nhất">
+    <input type="number" id="num5_2" placeholder="Số thứ hai">
+    <input type="number" id="num5_3" placeholder="Số thứ ba">
+    <button onclick="bai5()">Tìm số nhỏ nhất</button>
+    <div id="bai5Result"></div>
+
+    <script>
+        function bai5() {
+            let num1 = parseFloat(document.getElementById("num5_1").value);
+            let num2 = parseFloat(document.getElementById("num5_2").value);
+            let num3 = parseFloat(document.getElementById("num5_3").value);
+            let result = Math.min(num1, num2, num3);
+            document.getElementById("bai5Result").textContent = "Số nhỏ nhất: " + result;
+        }
+    </script>
+</body>
+</html>

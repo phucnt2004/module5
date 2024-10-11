@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Kiểm tra Ký Tự Số</title>
+</head>
+<body>
+    <h1>Bài 4: Kiểm tra ký tự số</h1>
+    <input type="text" id="charInput" placeholder="Nhập ký tự">
+    <button onclick="bai4()">Kiểm tra</button>
+    <div id="bai4Result"></div>
+
+    <script>
+        function bai4() {
+            let char = document.getElementById("charInput").value;
+            let result = !isNaN(char);
+            document.getElementById("bai4Result").textContent = "Là ký tự số: " + result;
+        }
+    </script>
+</body>
+</html>

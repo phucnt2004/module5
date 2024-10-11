@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Tính Giai Thừa</title>
+</head>
+<body>
+    <h1>Bài 3: Tính giai thừa</h1>
+    <input type="number" id="num3" placeholder="Nhập số nguyên">
+    <button onclick="bai3()">Tính giai thừa</button>
+    <div id="bai3Result"></div>
+
+    <script>
+        function bai3() {
+            let num = document.getElementById("num3").value;
+            let result = 1;
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+            document.getElementById("bai3Result").textContent = "Giai thừa: " + result;
+        }
+    </script>
+</body>
+</html>

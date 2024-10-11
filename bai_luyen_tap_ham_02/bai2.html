@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2: Tính Diện Tích và Chu Vi Hình Tròn</title>
+</head>
+<body>
+    <h1>Bài 2: Tính diện tích và chu vi hình tròn</h1>
+    <input type="number" id="radius" placeholder="Nhập bán kính">
+    <button onclick="bai2()">Tính diện tích và chu vi</button>
+    <div id="bai2Result"></div>
+
+    <script>
+        function bai2() {
+            let radius = document.getElementById("radius").value;
+            let area = Math.PI * radius * radius;
+            let circumference = 2 * Math.PI * radius;
+            document.getElementById("bai2Result").textContent = "Diện tích: " + area.toFixed(2) + ", Chu vi: " + circumference.toFixed(2);
+        }
+    </script>
+</body>
+</html>

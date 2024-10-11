@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 7: Đổi Chỗ Hai Số</title>
+</head>
+<body>
+    <h1>Bài 7: Đổi chỗ hai số</h1>
+    <input type="number" id="num7_1" placeholder="Số thứ nhất">
+    <input type="number" id="num7_2" placeholder="Số thứ hai">
+    <button onclick="bai7()">Đổi chỗ</button>
+    <div id="bai7Result"></div>
+
+    <script>
+        function bai7() {
+            let num1 = document.getElementById("num7_1").value;
+            let num2 = document.getElementById("num7_2").value;
+            [num1, num2] = [num2, num1];
+            document.getElementById("bai7Result").textContent = "Sau khi đổi chỗ: " + num1 + " và " + num2;
+        }
+    </script>
+</body>
+</html>

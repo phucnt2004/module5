@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6: Kiểm Tra Số Nguyên Dương</title>
+</head>
+<body>
+    <h1>Bài 6: Kiểm tra số nguyên dương</h1>
+    <input type="number" id="num6" placeholder="Nhập số">
+    <button onclick="bai6()">Kiểm tra</button>
+    <div id="bai6Result"></div>
+
+    <script>
+        function bai6() {
+            let num = document.getElementById("num6").value;
+            let result = num > 0 && Number.isInteger(parseFloat(num));
+            document.getElementById("bai6Result").textContent = "Là số nguyên dương: " + result;
+        }
+    </script>
+</body>
+</html>

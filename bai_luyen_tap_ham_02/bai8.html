@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8: Đảo Ngược Mảng</title>
+</head>
+<body>
+    <h1>Bài 8: Đảo ngược mảng</h1>
+    <input type="text" id="arrayInput" placeholder="Nhập mảng (cách nhau bởi dấu phẩy)">
+    <button onclick="bai8()">Đảo ngược</button>
+    <div id="bai8Result"></div>
+
+    <script>
+        function bai8() {
+            let arr = document.getElementById("arrayInput").value.split(',');
+            let reversedArr = arr.reverse();
+            document.getElementById("bai8Result").textContent = "Mảng sau khi đảo: " + reversedArr.join(', ');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 9: Kiểm Tra Ký Tự Trong Mảng</title>
+</head>
+<body>
+    <h1>Bài 9: Kiểm tra ký tự trong mảng</h1>
+    <input type="text" id="checkChar" placeholder="Nhập ký tự">
+    <button onclick="bai9()">Kiểm tra</button>
+    <div id="bai9Result"></div>
+
+    <script>
+        function bai9() {
+            let arr = ['a', 'e', 'i', 'o', 'u'];
+            let char = document.getElementById("checkChar").value;
+            let result = arr.includes(char);
+            document.getElementById("bai9Result").textContent = "Ký tự có trong mảng: " + result;
+        }
+    </script>
+</body>
+</html>
