@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Chuyển đổi nhiệt độ</h2>
+    
+    <div class="details">
+        <p id="celsius">Nhiệt độ (°C): </p>
+        <p id="fahrenheit">Nhiệt độ (°F): </p>
+        <p id="kelvin">Nhiệt độ (K): </p>
+    </div>
+
+    <script>
+        class Temperature {
+            constructor(celsius) {
+                this.celsius = celsius >= -273 ? celsius : -273;
+            }
+            toFahrenheit() {
+                return (this.celsius * 9/5) + 32;
+            }
+            toKelvin() {
+                return this.celsius + 273.15;
+            }
+            displayTemperature() {
+                document.getElementById('celsius').innerText = `Nhiệt độ (°C): ${this.celsius}`;
+                document.getElementById('fahrenheit').innerText = `Nhiệt độ (°F): ${this.toFahrenheit().toFixed(2)}`;
+                document.getElementById('kelvin').innerText = `Nhiệt độ (K): ${this.toKelvin().toFixed(2)}`;
+            }
+        }
+        const temp = new Temperature(25);
+        temp.displayTemperature();
+    </script>
+</body>
+</html>

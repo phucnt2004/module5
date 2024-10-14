@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            
+            border: none;
+        }
+        .details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hình chữ nhật màu cam</h2>
+    <canvas id="rectangleCanvas" width="300" height="150"></canvas>
+    <div class="details">
+        <p id="area">Diện tích: </p>
+        <p id="perimeter">Chu vi: </p>
+    </div>
+    <script>
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getArea() {
+                return this.width * this.height;
+            }
+
+            getPerimeter() {
+                return 2 * (this.width + this.height);
+            }
+
+            draw(canvasId) {
+                const canvas = document.getElementById(canvasId);
+                const context = canvas.getContext('2d');
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.fillStyle = '#FF4500';  
+                context.fillRect(50, 50, this.width, this.height);
+            }
+
+            setDimensions(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            displayDetails() {
+                document.getElementById('area').innerText = `Diện tích: ${this.getArea()}`;
+                document.getElementById('perimeter').innerText = `Chu vi: ${this.getPerimeter()}`;
+            }
+        }
+
+        let rect = new Rectangle(200, 100);
+        rect.draw('rectangleCanvas');
+        rect.displayDetails();
+    </script>
+</body>
+</html>
