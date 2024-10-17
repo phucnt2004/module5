@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch and Bulb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bulb {
+            width: 100px;
+            height: 150px;
+            background-color: #333;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .bulb.on {
+            background-color: yellow;
+            box-shadow: 0 0 30px rgba(255, 255, 0, 1);
+        }
+
+        .switch {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .switch:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="bulb" id="bulb"></div>
+        <button id="switch" class="switch">Toggle Switch</button>
+    </div>
+
+    <script>
+ 
+        let isBulbOn = false;
+        const bulb = document.getElementById('bulb');
+        const switchButton = document.getElementById('switch');
+        function toggleBulb() {
+            isBulbOn = !isBulbOn;
+
+   
+            if (isBulbOn) {
+                bulb.classList.add('on');
+            } else {
+                bulb.classList.remove('on');
+            }
+        }
+        switchButton.addEventListener('click', toggleBulb);
+    </script>
+
+</body>
+</html>
