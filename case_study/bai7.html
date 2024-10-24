@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 7 - Kiểm tra mảng ký tự</title>
+</head>
+<body>
+
+    <input type="text" id="inputArray7" placeholder='Nhập mảng ký tự (VD: "a",1,"b")'>
+    <button onclick="checkCharArray()">Kiểm tra</button>
+    <p>Kết quả: <span id="result7"></span></p>
+
+    <script>
+        function checkCharArray() {
+            const input = document.getElementById("inputArray7").value;
+            const arr = input.split(',').map(item => item.trim().replace(/["']/g, ''));
+
+            const allNumbers = arr.every(char => !isNaN(char));
+            const allLetters = arr.every(char => isNaN(char));
+
+            let result;
+            if (allNumbers) result = 1;
+            else if (allLetters) result = 0;
+            else result = -1;
+
+            document.getElementById("result7").textContent = result;
+        }
+    </script>
+</body>
+</html>

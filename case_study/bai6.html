@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6 - Kiểm tra mảng số nguyên</title>
+</head>
+<body>
+    
+    <input type="text" id="inputArray6" placeholder="Nhập mảng số nguyên (VD: 0,2,4)">
+    <button onclick="checkEvenOddArray()">Kiểm tra</button>
+    <p>Kết quả: <span id="result6"></span></p>
+
+    <script>
+        function checkEvenOddArray() {
+            const input = document.getElementById("inputArray6").value;
+            const arr = input.split(',').map(Number);
+            const allEven = arr.every(num => num % 2 === 0);
+            const allOdd = arr.every(num => num % 2 !== 0);
+
+            let result;
+            if (allEven) result = 1;
+            else if (allOdd) result = 0;
+            else result = -1;
+
+            document.getElementById("result6").textContent = result;
+        }
+    </script>
+</body>
+</html>

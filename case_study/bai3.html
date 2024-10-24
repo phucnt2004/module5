@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Mảng Động (Tối Đa 20 Phần Tử)</title>
+    
+</head>
+<body>
+   <script>
+    let a;
+    do{
+        a = +prompt("nhập số vào mảng: ");
+    }
+    while(a<=0);
+    let arr = [];
+    for (let i = 0; i<a; i++){
+        let item = +prompt("nhập phần tử thứ " +i);
+        arr.push(item);
+    }
+    alert(arr);
+    let newitem = +prompt("Nhập phẩn tử mới")
+    arr.push(newitem);
+    alert(arr);
+    let checkarr;
+    for(i = 0 ; i<Math.floor(arr.length /2); i++){
+        if(arr[i] !== arr[a-i]){
+            checkarr = false;
+        }
+        else {
+            checkarr = true;
+        }
+    }
+    if (checkarr == true){
+        alert("YESSSS");
+    }
+    else{
+        alert('NOOOOO');
+    }
+
+   </script>
+</body>
+</html>

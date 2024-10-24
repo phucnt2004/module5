@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 10</title>
+</head>
+<body>
+    <label>Nhập chuỗi:</label>
+    <input type="text" id="stringInput" placeholder="Nhập một chuỗi">
+    <button onclick="checkString()">Kiểm tra</button>
+    <p id="result"></p>
+
+    <script>
+        function checkString() {
+            let str = document.getElementById("stringInput").value.toLowerCase();
+            let vowels = ['a', 'e', 'i', 'o', 'u'];
+            let result = [];
+
+            for (let char of str) {
+                if (vowels.includes(char) && !result.includes(char)) {
+                    result.push(char);
+                }
+            }
+
+            document.getElementById("result").innerText = result.length > 0 ? result.join(",") : "Không có nguyên âm";
+        }
+    </script>
+</body>
+</html>

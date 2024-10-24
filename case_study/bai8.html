@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8 - Kiểm tra mảng số nguyên tố</title>
+</head>
+<body>
+    <input type="text" id="inputArray8" placeholder="Nhập mảng số nguyên (VD: 2,3,5)">
+    <button onclick="checkPrimeArray()">Kiểm tra</button>
+    <p>Kết quả: <span id="result8"></span></p>
+
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function checkPrimeArray() {
+            const input = document.getElementById("inputArray8").value;
+            const arr = input.split(',').map(Number);
+            const isAllPrime = arr.every(isPrime);
+
+            document.getElementById("result8").textContent = isAllPrime;
+        }
+    </script>
+</body>
+</html>

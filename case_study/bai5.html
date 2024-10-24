@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>findMaxNumber - JavaScript</title>
+</head>
+<body>
+
+    <input type="number" id="inputNumber" placeholder="Nhập số nguyên 4 chữ số">
+    <button onclick="findMaxNumber()">Kiểm tra</button>
+
+    <p>Kết quả: <span id="result"></span></p>
+
+    <script>
+        function findMaxNumber() {
+            const input = document.getElementById("inputNumber").value;
+            const resultElement = document.getElementById("result");
+            if (input.length !== 4) {
+                resultElement.textContent = "-1 (Không đủ 4 chữ số)";
+                return;
+            }
+            let maxValue = -1;
+            for (let i = 0; i < 4; i++) {
+                const newNumber = parseInt(input.slice(0, i) + input.slice(i + 1));
+                maxValue = Math.max(maxValue, newNumber);
+            }
+            resultElement.textContent = maxValue;
+        }
+    </script>
+</body>
+</html>

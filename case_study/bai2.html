@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Mảng Động (Tối Đa 20 Phần Tử)</title>
+    
+</head>
+    <label for="">Nhập cạnh A</label>
+    <input type="text" id = "canhA" name="canhA" value="" >
+    <label for="">Nhập cạnh B</label>
+    <input type="text" id = "canhB" name="canhB" value="" >
+    <label for="">Nhập cạnh C</label>
+    <input type="text" id = "canhC"name="canhC" value="" >
+    <button onclick="kiemtraTAMGIAC()">Kiểm Tra</button>
+    <p id = "ketqua"></p>
+<body>
+   <script>   
+    function kiemtraTAMGIAC() {
+        let canhA = document.getElementById('canhA').value;
+        let canhB = document.getElementById('canhB').value;
+        let canhC = document.getElementById('canhC').value;
+        if (canhA <= 0 || canhB <= 0 || canhC <= 0) {
+                document.getElementById('ketqua').innerText = "Vui lòng nhập giá trị lớn hơn 0.";
+                return;
+            }
+        else if (canhA*canhA + canhB*canhB == canhC*canhC || canhB*canhB + canhC*canhC == canhA*canhA || canhA*canhA + canhC*canhC == canhB*canhB){
+            document.getElementById('ketqua').innerText = "Là 3 cạnh của tam giác vuông";
+        }
+        else if (canhA + canhB <= canhC || canhB + canhC <= canhA || canhA + canhC <= canhB){
+            document.getElementById('ketqua').innerText = "Không là 3 cạnh của tam giác ";;
+        }
+        else {
+            document.getElementById('ketqua').innerText = "Là 3 cạnh của tam giác";
+        }
+    }
+   </script>
+</body>
+</html>

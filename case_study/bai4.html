@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+       
+        function ucln(a, b) {
+            if (b == 0) return a;
+            return ucln(b, a % b);
+        }
+
+        function find(x) {
+            let dinhNghia = /^\d{1,2}\/\d{1,2}$/; 
+            let kiemTra = dinhNghia.test(x);
+
+            if (!kiemTra) {
+                alert("Không phải là phần số");
+                return;
+            }
+
+            let [tuSo, mauSo] = x.split('/').map(Number);
+            if (mauSo == 0) {
+                alert("Không phải là phần số");
+                return;
+            }
+            if (tuSo == 0) {
+                alert("0");
+                return;
+            }
+
+            let uocSo = ucln(tuSo, mauSo); 
+            let tuMin = tuSo / uocSo; 
+            let mauMin = mauSo / uocSo; 
+            alert(tuMin + "/" + mauMin); 
+        }
+
+        let n = prompt("Nhập phân số (a/b): "); 
+        find(n); 
+    </script>
+</body>
+</html>

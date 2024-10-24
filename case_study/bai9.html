@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 9</title>
+</head>
+<body>
+   
+    <label>Nhập các phần tử của mảng :</label>
+    <input type="text" id="arrayInput" placeholder="Ví dụ: 1,2,6,7,5,8">
+    <button onclick="checkArray()">Kiểm tra</button>
+    <p id="result"></p>
+
+    <script>
+        function checkArray() {
+            let input = document.getElementById("arrayInput").value;
+            let arr = input.split(",").map(Number);
+            let isValid = true;
+
+            for (let i = 0; i < arr.length; i += 2) {
+                if (arr[i] >= arr[i + 1]) {
+                    isValid = false;
+                    break;
+                }
+            }
+
+            document.getElementById("result").innerText = isValid ? "OK" : "NO";
+        }
+    </script>
+</body>
+</html>
