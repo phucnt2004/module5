@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý học viên CODEGYM</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quản lý học viên CODEGYM</h1>
+    <button onclick="themhs()">Thêm mới học viên</button>
+    <button onclick="displayStudents()">Hiển thị danh sách học viên</button>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Mã học viên</th>
+                <th>Tên</th>
+                <th>Lớp</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dữ liệu học viên sẽ được thêm vào đây -->
+        </tbody>
+    </table>
+</body>
+<script>
+    let students = [];
+
+// Hiển thị danh sách học viên
+function displayStudents() {
+    const tableBody = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ""; 
+
+    students.forEach(student => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).innerText = student.id;
+        row.insertCell(1).innerText = student.name;
+        row.insertCell(2).innerText = student.class;
+        row.insertCell(3).innerText = student.email;
+        row.insertCell(4).innerText = student.birthDate;
+        row.insertCell(5).innerHTML = `<button onclick="suahs('${student.id}')">Sửa</button> 
+                                         <button onclick="xoahs('${student.id}')">Xóa</button>`;
+    });
+}
+
+// Thêm mới học viên
+function themhs() {
+    const id = prompt("Nhập mã học viên (HV-XXXX):");
+    if (!kiemtraID(id)) return;
+
+    const name = prompt("Nhập tên học viên:");
+    if (name.length > 50) return alert("Tên học viên không được quá 50 ký tự!");
+
+    const className = prompt("Nhập lớp:");
+    const email = prompt("Nhập email:");
+    const birthDate = prompt("Nhập ngày sinh (dd/mm/yyyy):");
+    if (!kiemtraNgay(birthDate)) return;
+
+    students.push({ id, name, class: className, email, birthDate });
+    displayStudents();
+}
+
+// Sửa thông tin học viên
+function suahs(id) {
+    const student = students.find(s => s.id === id);
+    if (!student) return alert("Mã học viên không tồn tại!");
+    const name = prompt("Sửa tên học viên:", student.name);
+    const className = prompt("Sửa lớp:", student.class);
+    const email = prompt("Sửa email:", student.email);
+    const birthDate = prompt("Sửa ngày sinh (dd/mm/yyyy):", student.birthDate);
+
+    if (name.length > 50) return alert("Tên học viên không được quá 50 ký tự!");
+    if (!kiemtraNgay(birthDate)) return;
+    student.name = name;
+    student.class = className;
+    student.email = email;
+    student.birthDate = birthDate;
+    displayStudents();
+}
+
+// Xóa học viên
+function xoahs(id) {
+    const index = students.findIndex(s => s.id === id);
+    if (index === -1) return alert("Mã học viên không tồn tại!");
+
+    if (confirm("Bạn có chắc chắn muốn xóa học viên này không?")) {
+        students.splice(index, 1);
+        displayStudents();
+    }
+}
+
+// Kiểm tra định dạng mã học viên
+function kiemtraID(id) {
+    const regex = /^HV-\d{4}$/;
+    if (!regex.test(id) || students.some(s => s.id === id)) {
+        alert("Mã học viên không hợp lệ hoặc đã tồn tại!");
+        return false;
+    }
+    return true;
+}
+
+// Kiểm tra định dạng ngày
+function kiemtraNgay(date) {
+    const regex = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!regex.test(date)) {
+        alert("Ngày sinh không hợp lệ!");
+        return false;
+    }
+    return true;
+}
+
+</script>
+</html>
