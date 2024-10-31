@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cặp Số Thân Thiết</title>
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Nhập số nguyên dương thứ nhất">
+    <input type="number" id="num2" placeholder="Nhập số nguyên dương thứ hai">
+    <button onclick="kiem_tra_so_than_thiet()">Kiểm Tra</button>
+    <p id="ketqua"></p>
+    <script>
+        function chia_so_tong(n) {
+            let sum = 0;
+            for (let i = 1; i <= n / 2; i++) {
+                if (n % i === 0) {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+        function kiem_tra_so_than_thiet() {
+            const num1 = parseInt(document.getElementById('num1').value);
+            const num2 = parseInt(document.getElementById('num2').value);
+
+            if (num1 <= 0 || num2 <= 0) {
+                document.getElementById('result').innerText = 'Vui lòng nhập các số nguyên dương.';
+                return;
+            }
+            const sum1 = chia_so_tong(num1);
+            const sum2 = chia_so_tong(num2);
+            const so_than_thiet = (sum1 === num2 && sum2 === num1);
+            document.getElementById('ketqua').innerText = so_than_thiet ? 'Đúng: Đây là cặp số thân thiết.' : 'Sai: Đây không phải là cặp số thân thiết.';
+        }
+    </script>
+</body>
+</html>

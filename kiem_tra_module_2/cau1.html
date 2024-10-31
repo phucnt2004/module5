@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Trung Bình Cộng</title>
+</head>
+<body>
+    <input type="text" id="nhap" placeholder="Nhập mảng số nguyên (cách nhau bởi dấu phẩy)">
+    <button onclick="tinh_trung_binh_cong()">Tính Trung Bình Cộng</button>
+    <p id="ketqua"></p>
+
+    <script>
+        function tinh_trung_binh_cong() {
+            const input = document.getElementById('nhap').value;
+            const array = input.split(',').map(Number).filter(num => !isNaN(num));
+
+            if (array.length > 50) {
+                document.getElementById('ketqua').innerText = 'Mảng tối đa 50.';
+                return;
+            }
+
+            let sum = 0;
+            let count = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (i % 2 === 0 && array[i] % 2 !== 0) {
+                    sum += array[i];
+                    count++;
+                }
+            }
+            const average = count > 0 ? (sum / count) : 0;
+            document.getElementById('ketqua').innerText = `Trung bình cộng các số lẻ ở vị trí chẵn là: ${average}`;
+        }
+    </script>
+</body>
+</html>

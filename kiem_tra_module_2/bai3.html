@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sách</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quản Lý Sách</h1>
+    <button onclick="addBook()">Thêm Sách Mới</button>
+    <button onclick="addExistingBook()">Thêm Sách Đã Có</button>
+    <button onclick="borrowBook()">Mượn Sách</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Mã Số Sách</th>
+                <th>Tên Sách</th>
+                <th>Năm Xuất Bản</th>
+                <th>Số Quyển Hiện Có</th>
+                <th>Số Quyển Tối Đa</th>
+                <th>Tình Trạng</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody id="bookList"></tbody>
+    </table>
+
+    <script>
+        class Book {
+            constructor(code, title, year, quantity) {
+                this.code = code;
+                this.title = title;
+                this.year = year;
+                this.quantity = quantity;
+                this.maxQuantity = quantity;
+                this.status = quantity > 0;
+            }
+        }
+
+        const books = [];
+
+        function addBook() {
+            let code;
+            do {
+                code = prompt("Nhập mã số sách (5 ký tự, bắt đầu từ 1-5):");
+            } while (!validateCode(code));
+
+            let title = prompt("Nhập tên sách:");
+            let year;
+            do {
+                year = prompt("Nhập năm xuất bản (4 số):");
+            } while (!validateYear(year));
+
+            let quantity;
+            do {
+                quantity = parseInt(prompt("Nhập số quyển tối đa:"));
+            } while (isNaN(quantity) || quantity <= 0);
+
+            const newBook = new Book(code, title, year, quantity);
+            books.push(newBook);
+            alert("Thêm sách thành công!");
+            displayBooks();
+        }
+
+        function addExistingBook() {
+            let code = prompt("Nhập mã số sách đã có để thêm quyển:");
+            const book = books.find(b => b.code === code);
+            if (book) {
+                let additionalQuantity;
+                do {
+                    additionalQuantity = parseInt(prompt(`Nhập số quyển cần thêm cho sách "${book.title}":`));
+                } while (isNaN(additionalQuantity) || additionalQuantity <= 0);
+                
+                book.quantity += additionalQuantity;
+                book.status = true;
+                alert(`Đã thêm ${additionalQuantity} quyển cho sách "${book.title}".`);
+            } else {
+                alert("Không tìm thấy sách với mã số này.");
+            }
+            displayBooks();
+        }
+
+        function borrowBook() {
+            let code = prompt("Nhập mã số sách để mượn:");
+            const book = books.find(b => b.code === code);
+            if (book) {
+                if (book.quantity > 0) {
+                    book.quantity--;
+                    book.status = book.quantity > 0;
+                    alert(`Mượn sách "${book.title}" thành công!`);
+                } else {
+                    alert("Sách này đã cho mượn hết.");
+                }
+            } else {
+                alert("Không tìm thấy sách với mã số này.");
+            }
+            displayBooks();
+        }
+
+        function editBook(index) {
+            const book = books[index];
+
+            let code = book.code;
+            let title = prompt("Nhập tên sách:", book.title);
+            let year;
+            do {
+                year = prompt("Nhập năm xuất bản (4 số):", book.year);
+            } while (!validateYear(year));
+
+            let quantity;
+            do {
+                quantity = parseInt(prompt("Nhập số quyển tối đa:", book.maxQuantity));
+            } while (isNaN(quantity) || quantity <= 0);
+
+            books[index] = new Book(code, title, year, quantity);
+            alert("Sửa sách thành công!");
+            displayBooks();
+        }
+
+        function deleteBook(index) {
+            if (confirm("Bạn có chắc chắn muốn xóa sách này không?")) {
+                books.splice(index, 1);
+                alert("Xóa sách thành công!");
+                displayBooks();
+            }
+        }
+
+        function validateCode(code) {
+            const regex = /^[1-5][0-9]{4}$/;
+            if (!regex.test(code)) {
+                alert("Mã số sách không hợp lệ! Phải có 5 ký tự (ký tự đầu từ 1-5).");
+                return false;
+            }
+            return true;
+        }
+
+        function validateYear(year) {
+            const regex = /^\d{4}$/;
+            if (!regex.test(year)) {
+                alert("Năm xuất bản không hợp lệ! Phải là 4 số.");
+                return false;
+            }
+            return true;
+        }
+
+        function displayBooks() {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = ""; 
+            books.forEach((book, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${book.code}</td>
+                    <td>${book.title}</td>
+                    <td>${book.year}</td>
+                    <td>${book.quantity}</td>
+                    <td>${book.maxQuantity}</td>
+                    <td>${book.status ? "Chưa cho mượn hết" : "Đã cho mượn hết"}</td>
+                    <td>
+                        <button onclick="editBook(${index})">Sửa</button>
+                        <button onclick="deleteBook(${index})">Xóa</button>
+                    </td>
+                `;
+                bookList.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
